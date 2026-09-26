@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Projet Maison — Gardez le contrôle de votre projet</title>
+<meta name="description" content="Mon Projet Maison vous aide à suivre votre budget, comparer vos devis et organiser votre chantier. Précommande fondateur à 19 €.">
+<style>
+:root{
+  --ink:#17201d;
+  --muted:#66706b;
+  --cream:#f7f5ef;
+  --white:#fff;
+  --line:#e6e2d8;
+  --accent:#315c4b;
+  --accent2:#dce9df;
+  --warm:#efe6d5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--cream);line-height:1.55}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.5px}
+.logo span{color:var(--accent)}
+.nav-cta{padding:11px 17px;border-radius:999px;background:var(--ink);color:white;font-weight:700;font-size:14px}
+.hero{padding:72px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.badge{display:inline-flex;gap:8px;align-items:center;background:var(--accent2);color:var(--accent);padding:7px 12px;border-radius:999px;font-size:13px;font-weight:800;margin-bottom:20px}
+h1{font-size:clamp(42px,6vw,72px);line-height:.99;letter-spacing:-3px;margin:0 0 22px;max-width:760px}
+h1 em{font-style:normal;color:var(--accent)}
+.hero p{font-size:19px;color:var(--muted);max-width:650px;margin:0 0 28px}
+.cta{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:white;padding:16px 23px;border-radius:12px;font-weight:800;box-shadow:0 10px 30px rgba(49,92,75,.18)}
+.micro{font-size:13px;color:var(--muted);margin-top:12px}
+.dashboard{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 25px 70px rgba(23,32,29,.10);transform:rotate(1deg)}
+.d-top{display:flex;justify-content:space-between;align-items:center;padding:4px 3px 16px;font-weight:800}
+.pill{background:#eef2ed;border-radius:8px;padding:6px 9px;font-size:11px;color:var(--accent)}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card{background:#faf9f6;border:1px solid #eeeae0;border-radius:13px;padding:14px}
+.card small{display:block;color:var(--muted);font-size:11px}
+.card strong{font-size:22px;display:block;margin-top:4px}
+.progress{height:9px;background:#e8e8e2;border-radius:99px;margin-top:16px;overflow:hidden}
+.progress i{display:block;width:68%;height:100%;background:var(--accent);border-radius:99px}
+.rows{margin-top:12px}
+.row{display:flex;justify-content:space-between;border-top:1px solid #eeeae0;padding:11px 2px;font-size:12px}
+.section{padding:88px 0}
+.white{background:var(--white)}
+.center{text-align:center}
+.kicker{color:var(--accent);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1px}
+h2{font-size:clamp(30px,4vw,46px);letter-spacing:-1.8px;line-height:1.05;margin:10px auto 16px}
+.lead{color:var(--muted);max-width:680px;margin:0 auto 42px;font-size:17px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:left}
+.feature{border:1px solid var(--line);border-radius:18px;padding:26px;background:var(--cream)}
+.icon{width:42px;height:42px;border-radius:12px;background:var(--accent2);display:grid;place-items:center;font-size:20px;margin-bottom:18px}
+.feature h3{margin:0 0 8px;font-size:20px}
+.feature p{margin:0;color:var(--muted);font-size:15px}
+.offer{background:var(--ink);color:white;border-radius:26px;padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.offer h2{margin:0 0 15px;color:white}
+.offer p{color:#c8d0cc}
+.offer-box{background:white;color:var(--ink);border-radius:20px;padding:26px}
+.price-old{text-decoration:line-through;color:var(--muted);font-size:14px}
+.price{font-size:48px;line-height:1;font-weight:900;margin:4px 0 12px}
+.checks{padding:0;margin:18px 0;list-style:none}
+.checks li{margin:9px 0;font-size:14px}
+.checks li:before{content:"✓";color:var(--accent);font-weight:900;margin-right:8px}
+.offer .cta{width:100%}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{padding:26px;border-top:3px solid var(--accent)}
+.num{font-size:12px;font-weight:900;color:var(--accent)}
+.step h3{margin:8px 0}
+.step p{color:var(--muted);margin:0}
+.faq{max-width:760px;margin:auto}
+details{border-top:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font-weight:800}
+details p{color:var(--muted);margin-bottom:0}
+footer{padding:40px 0;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media(max-width:800px){
+ .container{width:min(100% - 28px,600px)}
+ nav{height:64px}.nav-cta{padding:9px 13px}
+ .hero{padding:42px 0 55px}.hero-grid{grid-template-columns:1fr;gap:38px}
+ h1{letter-spacing:-2px}.hero p{font-size:17px}
+ .dashboard{transform:none}
+ .features,.steps,.offer{grid-template-columns:1fr}
+ .section{padding:64px 0}
+ .offer{padding:28px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">Mon Projet <span>Maison</span></div>
+      <a class="nav-cta" href="https://buy.stripe.com/fZueVcdQdg2adlneyFg3600">Précommander</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge">🏠 En pré-lancement · Offre fondateur à 19 €</div>
+      <h1>Votre maison. Votre budget. <em>Un seul endroit.</em></h1>
+      <p>Construisez ou rénovez votre maison sans vous perdre entre les devis, les dépenses, les artisans et les échéances. <strong>Mon Projet Maison</strong> centralisera tout ce dont vous avez besoin pour garder une vision claire de votre projet.</p>
+      <a class="cta" href="https://buy.stripe.com/fZueVcdQdg2adlneyFg3600">Je veux l'accès fondateur à 19 € →</a>
+      <div class="micro">Précommande transparente · Produit en développement · Livraison prévue en novembre 2026</div>
+    </div>
+
+    <div class="dashboard" aria-label="Aperçu du futur tableau de bord">
+      <div class="d-top"><span>Mon Projet Maison</span><span class="pill">VUE PROJET</span></div>
+      <div class="cards">
+        <div class="card"><small>Budget total</small><strong>210 000 €</strong></div>
+        <div class="card"><small>Prévision finale</small><strong>212 450 €</strong></div>
+        <div class="card"><small>Déjà dépensé</small><strong>146 200 €</strong></div>
+        <div class="card"><small>Reste à payer</small><strong>63 800 €</strong></div>
+      </div>
+      <div style="font-size:12px;font-weight:800;margin-top:17px">Avancement du projet · 68 %</div>
+      <div class="progress"><i></i></div>
+      <div class="rows">
+        <div class="row"><span>Gros œuvre</span><b>✓ Terminé</b></div>
+        <div class="row"><span>Électricité</span><b>En cours</b></div>
+        <div class="row"><span>Cuisine</span><b>À prévoir</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="container center">
+    <div class="kicker">Pourquoi cet outil ?</div>
+    <h2>Le budget dérape rarement en une seule fois.</h2>
+    <p class="lead">Ce sont les dizaines de devis, achats, acomptes, modifications et dépenses oubliées qui finissent par faire perdre le fil. L'objectif de Mon Projet Maison : vous donner une vision claire avant que les écarts ne s'accumulent.</p>
+    <div class="features">
+      <article class="feature">
+        <div class="icon">💰</div>
+        <h3>Votre budget, en temps réel</h3>
+        <p>Voyez ce qui est payé, ce qui est engagé et ce que votre projet risque de coûter au final.</p>
+      </article>
+      <article class="feature">
+        <div class="icon">📑</div>
+        <h3>Vos devis au même endroit</h3>
+        <p>Comparez les montants, prestations, matériaux, délais et conditions sans chercher dans dix fichiers différents.</p>
+      </article>
+      <article class="feature">
+        <div class="icon">🏗️</div>
+        <h3>Votre chantier, sans le chaos</h3>
+        <p>Suivez artisans, échéances, paiements et prochaines étapes depuis une seule vue.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="offer" id="precommande">
+      <div>
+        <div class="kicker" style="color:#a8cdb7">Offre fondateur</div>
+        <h2>Soyez parmi les premiers à l'utiliser.</h2>
+        <p>La première version est en cours de conception. En réservant maintenant, vous bénéficiez du tarif fondateur et pouvez contribuer aux priorités de la V1.</p>
+      </div>
+      <div class="offer-box">
+        <div class="price-old">Prix prévu après lancement : 39 €</div>
+        <div class="price">19 €</div>
+        <div style="font-weight:800">Accès fondateur · 50 premières places</div><div style="margin-top:7px;font-size:13px;color:#66706b;font-weight:700">Livraison prévue : novembre 2026</div>
+        <ul class="checks">
+          <li>Accès à la V1 dès sa livraison</li>
+          <li>Google Sheets + Excel</li>
+          <li>Les mises à jour de la V1 incluses</li>
+          <li>Possibilité de faire remonter vos besoins</li>
+          <li>Tarif fondateur de 19 €</li>
+        </ul>
+        <!-- REMPLACER #PREORDER_URL# PAR LE LIEN DE PAIEMENT -->
+        <a class="cta" href="https://buy.stripe.com/fZueVcdQdg2adlneyFg3600">Réserver à 19 €</a>
+        <div class="micro" style="text-align:center;margin-top:10px">Paiement sécurisé via Stripe · Précommande d’un produit en développement · Date de livraison affichée avant paiement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section white">
+  <div class="container center">
+    <div class="kicker">L'idée</div>
+    <h2>Moins de fichiers. Plus de visibilité.</h2>
+    <p class="lead">Pas besoin d'être expert en gestion de projet. Vous renseignez les informations importantes, l'outil vous aide à garder une vue d'ensemble.</p>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h3>Vous renseignez votre projet</h3><p>Budget, devis, artisans, paiements et travaux prévus.</p></div>
+      <div class="step"><div class="num">02</div><h3>Vous suivez ce qui change</h3><p>Chaque nouvelle dépense ou modification met votre budget à jour.</p></div>
+      <div class="step"><div class="num">03</div><h3>Vous gardez une vue d'ensemble</h3><p>Un tableau de bord vous permet de voir rapidement où vous en êtes.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center">
+      <div class="kicker">Questions fréquentes</div>
+      <h2>Avant de réserver</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Le produit existe-t-il déjà ?</summary>
+        <p>Non. Cette page présente une prévente de la première version. Le produit sera construit à partir des besoins des premiers utilisateurs.</p>
+      </details>
+      <details>
+        <summary>Quand vais-je recevoir le produit ?</summary>
+        <p>La livraison de la V1 est prévue en novembre 2026. Vous recevrez les informations de livraison à l’adresse e-mail utilisée lors du paiement.</p>
+      </details>
+      <details>
+        <summary>Est-ce uniquement pour une construction neuve ?</summary>
+        <p>La première version sera pensée pour la construction et pourra également être adaptée à la rénovation. Le positionnement exact sera validé pendant la phase de prévente.</p>
+      </details>
+      <details>
+        <summary>Pourquoi précommander ?</summary>
+        <p>La prévente permet de réserver au tarif fondateur et de contribuer aux priorités de la première version.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <strong>Mon Projet Maison</strong><br>
+    Produit en pré-lancement. Les éléments présentés sont une proposition de première version et pourront évoluer selon les retours des premiers utilisateurs.
+  </div>
+</footer>
+</body>
+</html>
